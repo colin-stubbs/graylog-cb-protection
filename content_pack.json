@@ -1,11 +1,11 @@
-{  
-   "name":"Bit9",
-   "description":"Creates a content pack for Bit9",
+{
+   "name":"Cb Protection",
+   "description":"Creates a content pack for Cb Protection",
    "category":"Security",
-   "inputs":[  
-      {  
-         "title":"Bit9",
-         "configuration":{  
+   "inputs":[
+      {
+         "title":"Cb-Protection-Syslog",
+         "configuration":{
             "expand_structured_data":false,
             "recv_buffer_size":262144,
             "port":11005,
@@ -15,281 +15,281 @@
             "bind_address":"0.0.0.0",
             "store_full_message":true
          },
-         "static_fields":{  
+         "static_fields":{
 
          },
          "type":"org.graylog2.inputs.syslog.udp.SyslogUDPInput",
          "global":true,
-         "extractors":[  
-            {  
+         "extractors":[
+            {
                "title":"ip_address",
                "type":"GROK",
                "cursor_strategy":"COPY",
                "target_field":"",
                "source_field":"full_message",
-               "configuration":{  
+               "configuration":{
                   "grok_pattern":"ip_address=\"%{IP:ip_address}\""
                },
-               "converters":[  
+               "converters":[
 
                ],
                "condition_type":"NONE",
                "condition_value":"",
                "order":11
             },
-            {  
+            {
                "title":"Process",
                "type":"REGEX",
                "cursor_strategy":"COPY",
                "target_field":"process",
                "source_field":"full_message",
-               "configuration":{  
+               "configuration":{
                   "regex_value":"process=\"([^\"]+)\""
                },
-               "converters":[  
+               "converters":[
 
                ],
                "condition_type":"NONE",
                "condition_value":"",
                "order":9
             },
-            {  
+            {
                "title":"file_path",
                "type":"REGEX",
                "cursor_strategy":"COPY",
                "target_field":"file_path",
                "source_field":"full_message",
-               "configuration":{  
+               "configuration":{
                   "regex_value":"file_path=\"([^\"]+)\""
                },
-               "converters":[  
+               "converters":[
 
                ],
                "condition_type":"NONE",
                "condition_value":"",
                "order":13
             },
-            {  
+            {
                "title":"file_name",
                "type":"REGEX",
                "cursor_strategy":"COPY",
                "target_field":"file_name",
                "source_field":"full_message",
-               "configuration":{  
+               "configuration":{
                   "regex_value":"file_name=\"([^\"]+)\""
                },
-               "converters":[  
+               "converters":[
 
                ],
                "condition_type":"NONE",
                "condition_value":"",
                "order":12
             },
-            {  
+            {
                "title":"file_hash",
                "type":"REGEX",
                "cursor_strategy":"COPY",
                "target_field":"file_hash",
                "source_field":"full_message",
-               "configuration":{  
+               "configuration":{
                   "regex_value":"file_hash=\"([^\"]+)\""
                },
-               "converters":[  
+               "converters":[
 
                ],
                "condition_type":"NONE",
                "condition_value":"",
                "order":7
             },
-            {  
+            {
                "title":"policy",
                "type":"REGEX",
                "cursor_strategy":"COPY",
                "target_field":"policy",
                "source_field":"full_message",
-               "configuration":{  
+               "configuration":{
                   "regex_value":"policy=\"([^\"]+)\""
                },
-               "converters":[  
+               "converters":[
 
                ],
                "condition_type":"NONE",
                "condition_value":"",
                "order":14
             },
-            {  
+            {
                "title":"process_key",
                "type":"REGEX",
                "cursor_strategy":"COPY",
                "target_field":"process_key",
                "source_field":"full_message",
-               "configuration":{  
+               "configuration":{
                   "regex_value":"process_key=\"([^\"]+)\""
                },
-               "converters":[  
+               "converters":[
 
                ],
                "condition_type":"NONE",
                "condition_value":"",
                "order":6
             },
-            {  
+            {
                "title":"server_version",
                "type":"REGEX",
                "cursor_strategy":"COPY",
                "target_field":"server_version",
                "source_field":"full_message",
-               "configuration":{  
+               "configuration":{
                   "regex_value":"server_version=\"([^\"]+)\""
                },
-               "converters":[  
+               "converters":[
 
                ],
                "condition_type":"NONE",
                "condition_value":"",
                "order":15
             },
-            {  
+            {
                "title":"Message",
                "type":"REGEX",
                "cursor_strategy":"COPY",
                "target_field":"message",
                "source_field":"message",
-               "configuration":{  
+               "configuration":{
                   "regex_value":"text=\"([^\"]+)\""
                },
-               "converters":[  
+               "converters":[
 
                ],
                "condition_type":"NONE",
                "condition_value":"",
                "order":20
             },
-            {  
+            {
                "title":"Subtype",
                "type":"REGEX",
                "cursor_strategy":"COPY",
                "target_field":"subtype",
                "source_field":"full_message",
-               "configuration":{  
+               "configuration":{
                   "regex_value":"subtype=\"([^\"]+)\""
                },
-               "converters":[  
+               "converters":[
 
                ],
                "condition_type":"NONE",
                "condition_value":"",
                "order":8
             },
-            {  
+            {
                "title":"Type",
                "type":"REGEX",
                "cursor_strategy":"COPY",
                "target_field":"type",
                "source_field":"full_message",
-               "configuration":{  
+               "configuration":{
                   "regex_value":"type=\"([^\"]+)\""
                },
-               "converters":[  
+               "converters":[
 
                ],
                "condition_type":"NONE",
                "condition_value":"",
                "order":4
             },
-            {  
+            {
                "title":"Hostname",
                "type":"REGEX",
                "cursor_strategy":"COPY",
                "target_field":"hostname",
                "source_field":"full_message",
-               "configuration":{  
+               "configuration":{
                   "regex_value":"hostname=\"([^\"]+)\""
                },
-               "converters":[  
+               "converters":[
 
                ],
                "condition_type":"NONE",
                "condition_value":"",
                "order":10
             },
-            {  
+            {
                "title":"username",
                "type":"REGEX",
                "cursor_strategy":"COPY",
                "target_field":"username",
                "source_field":"full_message",
-               "configuration":{  
+               "configuration":{
                   "regex_value":"username=\"([^\"]+)\""
                },
-               "converters":[  
+               "converters":[
 
                ],
                "condition_type":"NONE",
                "condition_value":"",
                "order":3
             },
-            {  
+            {
                "title":"Date",
                "type":"REGEX",
                "cursor_strategy":"COPY",
                "target_field":"date",
                "source_field":"full_message",
-               "configuration":{  
+               "configuration":{
                   "regex_value":"date=\"([^\"]+)\""
                },
-               "converters":[  
+               "converters":[
 
                ],
                "condition_type":"NONE",
                "condition_value":"",
                "order":5
             },
-            {  
+            {
                "title":"rule_name",
                "type":"REGEX",
                "cursor_strategy":"COPY",
                "target_field":"rule_name",
                "source_field":"full_message",
-               "configuration":{  
+               "configuration":{
                   "regex_value":"rule_name=\"([^\"]+)\""
                },
-               "converters":[  
+               "converters":[
 
                ],
                "condition_type":"NONE",
                "condition_value":"",
                "order":0
             },
-            {  
+            {
                "title":"updater_namer",
                "type":"REGEX",
                "cursor_strategy":"COPY",
                "target_field":"updater_name",
                "source_field":"full_message",
-               "configuration":{  
+               "configuration":{
                   "regex_value":"updater_name=\"([^\"]+)\""
                },
-               "converters":[  
+               "converters":[
 
                ],
                "condition_type":"NONE",
                "condition_value":"",
                "order":0
             },
-            {  
+            {
                "title":"file_threat",
                "type":"REGEX",
                "cursor_strategy":"COPY",
                "target_field":"file_threat",
                "source_field":"full_message",
-               "configuration":{  
+               "configuration":{
                   "regex_value":"file_threat=\"([^\"]+)\""
                },
-               "converters":[  
-                  {  
+               "converters":[
+                  {
                      "type":"NUMERIC",
-                     "configuration":{  
+                     "configuration":{
 
                      }
                   }
@@ -298,19 +298,19 @@
                "condition_value":"",
                "order":17
             },
-            {  
+            {
                "title":"file_trust",
                "type":"REGEX",
                "cursor_strategy":"COPY",
                "target_field":"file_trust",
                "source_field":"full_message",
-               "configuration":{  
+               "configuration":{
                   "regex_value":"file_trust=\"([^\"]+)\""
                },
-               "converters":[  
-                  {  
+               "converters":[
+                  {
                      "type":"NUMERIC",
-                     "configuration":{  
+                     "configuration":{
 
                      }
                   }
@@ -319,19 +319,19 @@
                "condition_value":"",
                "order":16
             },
-            {  
+            {
                "title":"process_trust",
                "type":"REGEX",
                "cursor_strategy":"COPY",
                "target_field":"process_trust",
                "source_field":"full_message",
-               "configuration":{  
+               "configuration":{
                   "regex_value":"process_trust=\"([^\"]+)\""
                },
-               "converters":[  
-                  {  
+               "converters":[
+                  {
                      "type":"NUMERIC",
-                     "configuration":{  
+                     "configuration":{
 
                      }
                   }
@@ -340,19 +340,19 @@
                "condition_value":"",
                "order":18
             },
-            {  
+            {
                "title":"process_threat",
                "type":"REGEX",
                "cursor_strategy":"COPY",
                "target_field":"process_threat",
                "source_field":"full_message",
-               "configuration":{  
+               "configuration":{
                   "regex_value":"process_threat=\"([^\"]+)\""
                },
-               "converters":[  
-                  {  
+               "converters":[
+                  {
                      "type":"NUMERIC",
-                     "configuration":{  
+                     "configuration":{
 
                      }
                   }
@@ -364,23 +364,23 @@
          ]
       }
    ],
-   "streams":[  
+   "streams":[
 
    ],
-   "outputs":[  
+   "outputs":[
 
    ],
-   "dashboards":[  
-      {  
-         "title":"Bit9",
-         "description":"Bit9 Overview",
-         "dashboard_widgets":[  
-            {  
+   "dashboards":[
+      {
+         "title":"Cb Protection",
+         "description":"Cb Protection Overview",
+         "dashboard_widgets":[
+            {
                "description":"Top Unapproved File Hashes",
                "type":"QUICKVALUES",
                "cache_time":10,
-               "configuration":{  
-                  "timerange":{  
+               "configuration":{
+                  "timerange":{
                      "type":"relative",
                      "range":86400
                   },
@@ -394,12 +394,12 @@
                "height":2,
                "width":1
             },
-            {  
+            {
                "description":"Top Unapproved Files Generated IP",
                "type":"QUICKVALUES",
                "cache_time":10,
-               "configuration":{  
-                  "timerange":{  
+               "configuration":{
+                  "timerange":{
                      "type":"relative",
                      "range":86400
                   },
@@ -413,12 +413,12 @@
                "height":2,
                "width":1
             },
-            {  
+            {
                "description":"Top Unapproved File by Policy",
                "type":"QUICKVALUES",
                "cache_time":10,
-               "configuration":{  
-                  "timerange":{  
+               "configuration":{
+                  "timerange":{
                      "type":"relative",
                      "range":86400
                   },
@@ -432,12 +432,12 @@
                "height":2,
                "width":1
             },
-            {  
+            {
                "description":"Process Generating Unapproved File",
                "type":"QUICKVALUES",
                "cache_time":10,
-               "configuration":{  
-                  "timerange":{  
+               "configuration":{
+                  "timerange":{
                      "type":"relative",
                      "range":86400
                   },
@@ -451,12 +451,12 @@
                "height":2,
                "width":1
             },
-            {  
+            {
                "description":"User Generating Unapproved Files",
                "type":"QUICKVALUES",
                "cache_time":10,
-               "configuration":{  
-                  "timerange":{  
+               "configuration":{
+                  "timerange":{
                      "type":"relative",
                      "range":86400
                   },
@@ -470,12 +470,12 @@
                "height":3,
                "width":1
             },
-            {  
+            {
                "description":"Username Generating Unapproved",
                "type":"QUICKVALUES",
                "cache_time":10,
-               "configuration":{  
-                  "timerange":{  
+               "configuration":{
+                  "timerange":{
                      "type":"relative",
                      "range":86400
                   },
@@ -489,12 +489,12 @@
                "height":2,
                "width":1
             },
-            {  
+            {
                "description":"New Unapproved Files (24HR)",
                "type":"SEARCH_RESULT_COUNT",
                "cache_time":10,
-               "configuration":{  
-                  "timerange":{  
+               "configuration":{
+                  "timerange":{
                      "type":"relative",
                      "range":86400
                   },
@@ -510,7 +510,7 @@
          ]
       }
    ],
-   "grok_patterns":[  
+   "grok_patterns":[
 
    ]
 }
